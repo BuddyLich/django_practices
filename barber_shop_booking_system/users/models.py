@@ -11,6 +11,7 @@ class Users(AbstractUser):
 class Customer(models.Model):
     user = models.OneToOneField(Users, on_delete=models.CASCADE, primary_key=True)
     gender = models.CharField(max_length=32)
+    mobile_number = models.CharField(max_length=10, default='')
     bookings = models.ForeignKey(Booking, on_delete=models.CASCADE)
     blocked = models.BooleanField('Blocked', default=False)
     activated = models.BooleanField('Activated', default=False)
