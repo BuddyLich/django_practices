@@ -15,6 +15,12 @@ class CustomerInfo(models.Model):
     blocked = models.BooleanField('Blocked', default=False)
     activated = models.BooleanField('Activated', default=False)
 
+    def __str__(self):
+        return self.user.username
+
 
 class BarberInfo(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+
+    def __str__(self):
+        return self.user.username

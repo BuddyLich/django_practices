@@ -1,27 +1,26 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from .forms import UserRegisterForm, UserUpdateForm, CustomerRegisterForm, CustomerUpdateForm
 from django.contrib.auth.decorators import login_required
 
 
 def register(request):
     if request.method == 'POST':
-        # user_form = UserRegisterForm(request.POST, instance=request.user)
         user_form = UserRegisterForm(request.POST)
-        print('check 2')
         customer_form = CustomerRegisterForm(request.POST)
-        print('check 3')
 
         if user_form.is_valid() and customer_form.is_valid():
-            print('valid')
             user = user_form.save(commit=False)
             user.is_customer = True
             user.save()
-            customer_form.save()
-            return redirect('login')
+            customer = customer_form.save(commit=False)
+            customer.user = user
+            customer.save()
 
+            messages.success(request, 'Account Created!')
+            return redirect('login')
         else:
-            print(f'user_form is {user_form.is_valid()}')
-            print(f'customer_form is {customer_form.is_valid()}')
+            messages.error(request, 'Account Created Failed!')
             return redirect('register')
 
     else:
@@ -44,7 +43,7 @@ def profile(request):
         if user_form.is_valid() and customer_form.is_valid():
             user_form.save()
             customer_form.save()
-            return redirect('customer_profile')
+            return redirect('profile')
 
     else:
         user_form = UserUpdateForm(instance=request.user)
