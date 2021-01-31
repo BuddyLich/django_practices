@@ -1,0 +1,17 @@
+{% extends "booking/base.html" %}
+{% block content %}
+
+    {% if not bookings  %}
+        <h1>No booking</h1>
+    {% else %}
+        <div>
+            {% for booking in bookings %}
+                <p>{{ booking.booking_dt }}</p>
+                <p>{{ booking.type }}</p>
+                <p>{{ booking.additional_massages }}</p>
+                <a href="{% url 'booking_detail' booking.pk %}">Detail</a>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+{% endblock %}
