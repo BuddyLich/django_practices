@@ -3,15 +3,16 @@
 {% block content %}
     <div>
         <form method="POST">
+            {% csrf_token %}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-r">
-                    {{ user_form|crispy }}
-                    {{ customer_form|crispy }}
+                    {{ form|crispy }}
+<!--                    {{ customer_form|crispy }}-->
                 </legend>
             </fieldset>
-        </form>
         <div class="form-group">
             <button class="btn btn-outline-info" type="submit">Login</button>
         </div>
+        </form>
     </div>
 {% endblock %}

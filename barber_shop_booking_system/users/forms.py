@@ -1,7 +1,7 @@
 from django import forms
-from django.contrib.auth.models import User
+from users.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import Customer
+from .models import CustomerInfo
 
 
 class UserRegisterForm(UserCreationForm):
@@ -12,7 +12,7 @@ class UserRegisterForm(UserCreationForm):
 
 class CustomerRegisterForm(forms.ModelForm):
     class Meta:
-        model = Customer
+        model = CustomerInfo
         fields = ['mobile_number', 'email']
 
 
@@ -24,5 +24,5 @@ class UserUpdateForm(forms.ModelForm):
 
 class CustomerUpdateForm(forms.ModelForm):
     class Meta:
-        model = Customer
+        model = CustomerInfo
         fields = ['mobile_number', 'email']
