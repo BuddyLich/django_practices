@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from users.models import CustomerInfo
 from django.urls import reverse
+from datetime import datetime, timedelta
 
 
 class Booking(models.Model):
@@ -18,6 +19,7 @@ class Booking(models.Model):
     additional_massages = models.TextField(max_length=256, default="")
     is_online_booking = models.BooleanField(default=False)
     is_cancelled = models.BooleanField(default=False)
+    is_confirmed = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.customer.username} - {str(self.date)}'
@@ -25,6 +27,8 @@ class Booking(models.Model):
     def get_absolute_url(self):
         return reverse('booking_detail', kwargs={'pk': self.pk})
 
-    # @property
-    # def booking_dt(self):
-    #     return 0
+    @property
+    def booking_dt(self):
+        dt = f"{str(self.booking_date)} {self.booking_time}"
+        return datetime.strptime(dt, "%Y-%m-%d %H:%M")
+    # probably a bad practice here, will be changed later
