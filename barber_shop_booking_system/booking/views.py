@@ -3,6 +3,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DetailView
 from .models import Booking
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from users.models import CustomerInfo, User
+from .forms import BookingForm
 
 
 def home(request):
@@ -13,13 +14,13 @@ class UserBookingListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     model = Booking
     template_name = 'booking/my_bookings.html'
     context_object_name = 'bookings'
-    ordering = '-booking_dt'
+    ordering = ['-booking_date', '-booking_time']
     # paginate_by = 10
     # deal with pagination later
 
     def get_queryset(self):
         query_customer = get_object_or_404(CustomerInfo, pk=self.kwargs.get('pk'))
-        return Booking.objects.filter(customer=query_customer).order_by('-booking_dt')
+        return Booking.objects.filter(customer=query_customer).order_by('-pk')
 
     def test_func(self):
         query_user = get_object_or_404(CustomerInfo, pk=self.kwargs.get('pk')).user
@@ -30,7 +31,7 @@ class UserBookingListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
 
 class BookingCreateView(LoginRequiredMixin, CreateView):
     model = Booking
-    fields = ['booking_dt', 'type', 'additional_massages']
+    form_class = BookingForm
 
     def form_valid(self, form):
         customer = self.request.user.customer_id
@@ -44,7 +45,7 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
 
 class BookingUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Booking
-    fields = ['booking_dt', 'type', 'additional_massages']
+    form_class = BookingForm
 
     def form_valid(self, form):
         user = self.request.user
