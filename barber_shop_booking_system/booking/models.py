@@ -22,7 +22,7 @@ class Booking(models.Model):
     is_confirmed = models.BooleanField(default=False)
 
     def __str__(self):
-        return f'{self.customer.username} - {str(self.date)}'
+        return f'{self.customer.user.username} - {str(self.booking_date)}'
 
     def get_absolute_url(self):
         return reverse('booking_detail', kwargs={'pk': self.pk})
