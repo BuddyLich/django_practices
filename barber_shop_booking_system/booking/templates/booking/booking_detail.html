@@ -2,12 +2,17 @@
 {% block content %}
 
     <div>
-        <p>{{ object.booking_dt }}</p>
-        <p>{{ object.type }}</p>
-        <p>{{ object.additional_massages }}</p>
+        <p>Date: {{ object.booking_date }}</p>
+        <p>Time: {{ object.type }}</p>
+        <p>Additional Message: {{ object.additional_massages }}</p>
         <p>Confirmed: {{ object.is_confirmed }}</p>
-        <p>cancelled: {{ object.is_cancelled }}</p>
+        <p>Cancelled: {{ object.is_cancelled }}</p>
     </div>
 
 
+    <div>
+        <a href="{% url 'update_booking' object.pk %}"><button class="btn btn-primary">Update Booking</button></a>
+        <a href="{% url 'cancel_booking' object.pk %}"><button class="btn btn-danger">Cancel Booking</button></a>
+
+    </div>
 {% endblock %}

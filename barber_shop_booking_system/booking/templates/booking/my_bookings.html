@@ -8,7 +8,7 @@
             <div>
                 <h2>Pending</h2>
                 {% for booking in bookings %}
-                    {% if not booking.is_confirmed %}
+                    {% if not booking.is_confirmed and not booking.is_cancelled %}
                         <p>{{ booking.booking_dt }}</p>
                         <p>{{ booking.type }}</p>
                         <p>{{ booking.additional_massages }}</p>
@@ -20,7 +20,19 @@
             <div>
                 <h2>Confirmed</h2>
                 {% for booking in bookings %}
-                    {% if booking.is_confirmed %}
+                    {% if booking.is_confirmed and not booking.is_cancelled %}
+                        <p>{{ booking.booking_dt }}</p>
+                        <p>{{ booking.type }}</p>
+                        <p>{{ booking.additional_massages }}</p>
+                        <a href="{% url 'booking_detail' booking.pk %}">Detail</a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <div>
+                <h2>Cancelled</h2>
+                {% for booking in bookings %}
+                    {% if booking.is_cancelled %}
                         <p>{{ booking.booking_dt }}</p>
                         <p>{{ booking.type }}</p>
                         <p>{{ booking.additional_massages }}</p>

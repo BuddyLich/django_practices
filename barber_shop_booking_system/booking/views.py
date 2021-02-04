@@ -1,9 +1,11 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DetailView
 from .models import Booking
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from users.models import CustomerInfo, User
 from .forms import BookingForm
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 def home(request):
@@ -69,3 +71,15 @@ class BookingDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
 
         return self.request.user == query_customer or self.request.user.is_barber or self.request.user.is_staff
         # Only customer himself, or barber or admin can check user's booking
+
+
+@login_required
+def cancel_booking(request, pk):
+    booking = Booking.objects.filter(pk=pk).first()
+    if request.user != booking.customer.user:
+        return redirect('home')
+
+    booking.is_cancelled = True
+    booking.save()
+    messages.info(request, 'Booking cancelled')
+    return redirect('my_bookings', pk=request.user.pk)
