@@ -14,7 +14,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Barbershop Booking</a>
+        <a class="navbar-brand" href="{% url 'home' %}">Barbershop Booking</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -47,6 +47,11 @@
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    </li>
+                {% endif %}
+                {% if user.is_staff or user.is_barber %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'back_stage_bookings' %}">Back Stage</a>
                     </li>
                 {% endif %}
             </ul>

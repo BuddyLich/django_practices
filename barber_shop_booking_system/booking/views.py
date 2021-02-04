@@ -83,3 +83,20 @@ def cancel_booking(request, pk):
     booking.save()
     messages.info(request, 'Booking cancelled')
     return redirect('my_bookings', pk=request.user.pk)
+
+
+class BackStageBookingListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
+    model = Booking
+    template_name = 'booking/back_stage_bookings.html'
+    context_object_name = 'bookings'
+    ordering = ['-booking_date', '-booking_time']
+    # paginate_by = 10
+    # deal with pagination later
+
+    def get_queryset(self):
+        return Booking.objects.filter().order_by('-pk')
+
+    def test_func(self):
+        return self.request.user.is_staff or self.request.user.is_barber
+        # Only customer himself, or barber or admin can check user's booking
+
