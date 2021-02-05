@@ -36,11 +36,11 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
     form_class = BookingForm
 
     def form_valid(self, form):
-        customer = self.request.user.customer_id
-        form.instance.customer = customer
-        form.instance.customer_name = customer.user.username
-        form.instance.customer_mobile_number = customer.mobile_number
-        form.instance.email = customer.user.email
+        user = self.request.user
+        form.instance.customer = user.customer_id
+        form.instance.customer_name = user.username
+        form.instance.customer_mobile_number = user.customer_id.mobile_number
+        form.instance.email = user.email
 
         return super().form_valid(form)
 
@@ -51,10 +51,10 @@ class BookingUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def form_valid(self, form):
         user = self.request.user
-        form.instance.customer = user
+        form.instance.customer = user.customer_id
         form.instance.customer_name = user.username
-        form.instance.customer_mobile_number = user.mobile
-        form.instance.email = user.user.email
+        form.instance.customer_mobile_number = user.customer_id.mobile_number
+        form.instance.email = user.email
 
         return super().form_valid(form)
 

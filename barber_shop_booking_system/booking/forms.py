@@ -44,15 +44,23 @@ class BookingForm(forms.ModelForm):
         cleaned_data = super(BookingForm, self).clean()
         booking_date = cleaned_data.get('booking_date')
         booking_time = cleaned_data.get('booking_time')
-        dates_ahead = (booking_date - datetime.now().date()).days
-        if dates_ahead < 0:
-            raise forms.ValidationError("Booking date cannot earlier than today.")
 
-        if dates_ahead > 15:
-            raise forms.ValidationError("Booking date cannot later than 15 days.")
+        if "booking_date" in self.changed_data:
+            dates_ahead = (booking_date - datetime.now().date()).days
+            if dates_ahead < 0:
+                raise forms.ValidationError("Booking date cannot earlier than today.")
 
-        bookings_at_that_time = Booking.objects.filter(booking_date=booking_date, booking_time=booking_time).all()
-        if bookings_at_that_time.count() > (3 - 1):
-            raise forms.ValidationError("Booking time already occupied.")
+            if dates_ahead > 15:
+                raise forms.ValidationError("Booking date cannot later than 15 days.")
+
+        if "booking_time" in self.changed_data:
+            bookings_at_that_time = Booking.objects.filter(
+                booking_date=booking_date,
+                booking_time=booking_time,
+                status__in=['pending', 'confirmed']
+            ).all()
+
+            if bookings_at_that_time.count() > (3 - 1):
+                raise forms.ValidationError("Booking time already occupied.")
 
         return cleaned_data

@@ -14,6 +14,7 @@ the date input and choice input. It might be able to be changed through js, whic
 11. add a different user page for admin/barber
 12. add an email response when booking is confirmed
 13. user password reset, authentication and confirmation
+14. limit the number that user can make booking at the same time
 
 
 ## Front-End
