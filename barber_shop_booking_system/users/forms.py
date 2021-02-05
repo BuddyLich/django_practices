@@ -7,13 +7,13 @@ from .models import CustomerInfo
 class UserRegisterForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ['username', 'password1', 'password2']
+        fields = ['email', 'username', 'password1', 'password2']
 
 
 class CustomerRegisterForm(forms.ModelForm):
     class Meta:
         model = CustomerInfo
-        fields = ['mobile_number', 'email']
+        fields = ['mobile_number']
 
 
 class UserUpdateForm(forms.ModelForm):
@@ -25,4 +25,4 @@ class UserUpdateForm(forms.ModelForm):
 class CustomerUpdateForm(forms.ModelForm):
     class Meta:
         model = CustomerInfo
-        fields = ['mobile_number', 'email']
+        fields = ['mobile_number']

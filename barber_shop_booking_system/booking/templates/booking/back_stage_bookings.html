@@ -8,9 +8,9 @@
             <div>
                 <h2>Pending</h2>
                 {% for booking in bookings %}
-                    {% if not booking.is_confirmed and not booking.is_cancelled %}
+                    {% if booking.status == 'pending' %}
                         <p>Date: {{ booking.customer.user.username }}</p>
-                        <p>Date: {{ booking.customer.email }}</p>
+                        <p>Date: {{ booking.customer.user.email }}</p>
                         <p>Date: {{ booking.customer.mobile_number }}</p>
                         <p>Date: {{ booking.booking_date }}</p>
                         <p>Time: {{ booking.booking_time }}</p>
@@ -24,9 +24,25 @@
             <div>
                 <h2>Confirmed</h2>
                 {% for booking in bookings %}
-                    {% if booking.is_confirmed and not booking.is_cancelled %}
+                    {% if booking.status == 'confirmed' %}
                         <p>Date: {{ booking.customer.user.username }}</p>
-                        <p>Date: {{ booking.customer.email }}</p>
+                        <p>Date: {{ booking.customer.user.email }}</p>
+                        <p>Date: {{ booking.customer.mobile_number }}</p>
+                        <p>Date: {{ booking.booking_date }}</p>
+                        <p>Time: {{ booking.booking_time }}</p>
+                        <p>Type: {{ booking.type }}</p>
+                        <p>Additional Messages: {{ booking.additional_massages }}</p>
+                        <a href="{% url 'booking_detail' booking.pk %}">Detail</a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <div>
+                <h2>Completed</h2>
+                {% for booking in bookings %}
+                    {% if booking.status == 'completed' %}
+                        <p>Date: {{ booking.customer.user.username }}</p>
+                        <p>Date: {{ booking.customer.user.email }}</p>
                         <p>Date: {{ booking.customer.mobile_number }}</p>
                         <p>Date: {{ booking.booking_date }}</p>
                         <p>Time: {{ booking.booking_time }}</p>
@@ -40,9 +56,9 @@
             <div>
                 <h2>Cancelled</h2>
                 {% for booking in bookings %}
-                    {% if booking.is_cancelled %}
+                    {% if booking.status == 'cancelled' %}
                         <p>Date: {{ booking.customer.user.username }}</p>
-                        <p>Date: {{ booking.customer.email }}</p>
+                        <p>Date: {{ booking.customer.user.email }}</p>
                         <p>Date: {{ booking.customer.mobile_number }}</p>
                         <p>Date: {{ booking.booking_date }}</p>
                         <p>Time: {{ booking.booking_time }}</p>

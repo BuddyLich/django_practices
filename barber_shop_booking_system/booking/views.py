@@ -40,7 +40,7 @@ class BookingCreateView(LoginRequiredMixin, CreateView):
         form.instance.customer = customer
         form.instance.customer_name = customer.user.username
         form.instance.customer_mobile_number = customer.mobile_number
-        form.instance.email = customer.email
+        form.instance.email = customer.user.email
 
         return super().form_valid(form)
 
@@ -54,7 +54,7 @@ class BookingUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         form.instance.customer = user
         form.instance.customer_name = user.username
         form.instance.customer_mobile_number = user.mobile
-        form.instance.email = user.email
+        form.instance.email = user.user.email
 
         return super().form_valid(form)
 
@@ -79,8 +79,8 @@ def cancel_booking(request, pk):
     if request.user != booking.customer.user:
         return redirect('home')
 
-    booking.is_cancelled = True
-    booking.save()
+    booking.set_status('cancelled')
+
     messages.info(request, 'Booking cancelled')
     return redirect('my_bookings', pk=request.user.pk)
 
@@ -91,8 +91,8 @@ def confirm_booking(request, pk):
     if not (request.user.is_staff or request.user.is_barber):
         return redirect('home')
 
-    booking.is_confirmed = True
-    booking.save()
+    booking.set_status('confirmed')
+
     # send_confirm_email()
     messages.info(request, 'Booking confirmed')
     return redirect('back_stage_bookings')
@@ -112,4 +112,3 @@ class BackStageBookingListView(LoginRequiredMixin, UserPassesTestMixin, ListView
     def test_func(self):
         return self.request.user.is_staff or self.request.user.is_barber
         # Only customer himself, or barber or admin can check user's booking
-

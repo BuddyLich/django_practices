@@ -5,21 +5,32 @@
         <p>Date: {{ object.booking_date }}</p>
         <p>Time: {{ object.type }}</p>
         <p>Additional Message: {{ object.additional_massages }}</p>
-        <p>Confirmed: {{ object.is_confirmed }}</p>
-        <p>Cancelled: {{ object.is_cancelled }}</p>
+        <p>Booking Status: {{ object.status }}</p>
     </div>
 
     {% if user == object.customer.user %}
-        <div>
-            <a href="{% url 'update_booking' object.pk %}"><button class="btn btn-primary">Update Booking</button></a>
-            <a href="{% url 'cancel_booking' object.pk %}"><button class="btn btn-danger">Cancel Booking</button></a>
-        </div>
+        {% if object.status == 'pending' %}
+            <div>
+                <a href="{% url 'update_booking' object.pk %}"><button class="btn btn-primary">Update Booking</button></a>
+                <a href="{% url 'cancel_booking' object.pk %}"><button class="btn btn-danger">Cancel Booking</button></a>
+            </div>
+        {% elif object.status == 'confirmed' %}
+            <div>
+                <a href="{% url 'cancel_booking' object.pk %}"><button class="btn btn-danger">Cancel Booking</button></a>
+            </div>
+        {% endif %}
     {% endif %}
 
     {% if user.is_staff or user.is_barber  %}
-        <div>
-            <a href="{% url 'confirm_booking' object.pk %}"><button class="btn btn-primary">Confirm Booking</button></a>
-        </div>
+        {% if object.status == 'pending' %}
+            <div>
+                <a href="{% url 'confirm_booking' object.pk %}"><button class="btn btn-primary">Confirm Booking</button></a>
+            </div>
+        {% elif object.status == 'confirmed' %}
+            <div>
+                <a href="#"><button class="btn btn-primary">Complete</button></a>
+            </div>
+        {% endif %}
     {% endif %}
 
 {% endblock %}

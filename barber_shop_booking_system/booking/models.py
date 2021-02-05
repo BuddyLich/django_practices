@@ -18,8 +18,9 @@ class Booking(models.Model):
     type = models.CharField(max_length=32, default='')
     additional_massages = models.TextField(max_length=256, default="")
     is_online_booking = models.BooleanField(default=False)
-    is_cancelled = models.BooleanField(default=False)
-    is_confirmed = models.BooleanField(default=False)
+
+    status = models.CharField(max_length=12, default='pending')
+    # status: pending/cancelled/confirmed/completed
 
     def __str__(self):
         return f'{self.customer.user.username} - {str(self.booking_date)}'
@@ -32,3 +33,11 @@ class Booking(models.Model):
         dt = f"{str(self.booking_date)} {self.booking_time}"
         return datetime.strptime(dt, "%Y-%m-%d %H:%M")
     # probably a bad practice here, will be changed later
+
+    def set_status(self, status):
+        status_lst = ['pending', 'cancelled', 'confirmed', 'completed']
+        if status not in status_lst:
+            raise ValueError('Invalid status')
+
+        self.status = status
+        self.save()
