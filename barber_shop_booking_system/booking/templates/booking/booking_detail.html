@@ -9,10 +9,17 @@
         <p>Cancelled: {{ object.is_cancelled }}</p>
     </div>
 
+    {% if user == object.customer.user %}
+        <div>
+            <a href="{% url 'update_booking' object.pk %}"><button class="btn btn-primary">Update Booking</button></a>
+            <a href="{% url 'cancel_booking' object.pk %}"><button class="btn btn-danger">Cancel Booking</button></a>
+        </div>
+    {% endif %}
 
-    <div>
-        <a href="{% url 'update_booking' object.pk %}"><button class="btn btn-primary">Update Booking</button></a>
-        <a href="{% url 'cancel_booking' object.pk %}"><button class="btn btn-danger">Cancel Booking</button></a>
+    {% if user.is_staff or user.is_barber  %}
+        <div>
+            <a href="{% url 'confirm_booking' object.pk %}"><button class="btn btn-primary">Confirm Booking</button></a>
+        </div>
+    {% endif %}
 
-    </div>
 {% endblock %}

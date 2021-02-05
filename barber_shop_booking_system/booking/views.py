@@ -85,6 +85,19 @@ def cancel_booking(request, pk):
     return redirect('my_bookings', pk=request.user.pk)
 
 
+@login_required
+def confirm_booking(request, pk):
+    booking = Booking.objects.filter(pk=pk).first()
+    if not (request.user.is_staff or request.user.is_barber):
+        return redirect('home')
+
+    booking.is_confirmed = True
+    booking.save()
+    # send_confirm_email()
+    messages.info(request, 'Booking confirmed')
+    return redirect('back_stage_bookings')
+
+
 class BackStageBookingListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     model = Booking
     template_name = 'booking/back_stage_bookings.html'
