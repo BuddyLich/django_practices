@@ -39,12 +39,13 @@ def register(request):
 def profile(request, pk):
     profile_customer = get_object_or_404(CustomerInfo, pk=pk)
 
-    if not request.user.is_staff and request.user != profile_customer.user:
+    if (not request.user.is_staff) and request.user != profile_customer.user:
         return redirect('home')
 
     profile_user = profile_customer.user
 
     context = {
+        'profile_user': profile_user,
         'phone': profile_customer.mobile_number,
         'email': profile_user.email,
         'username': profile_user.username
