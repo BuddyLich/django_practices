@@ -23,7 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('booking.urls')),
     path('register/', user_view.register, name='register'),
-    path('profile/', user_view.profile, name='profile'),
+    path('profile/<int:pk>', user_view.profile, name='profile'),
+    path('profile/<int:pk>/update', user_view.profile_update, name='profile_update'),
     path('login/', auth_views.LoginView.as_view(template_name='customer/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='customer/logout.html'), name='logout')
 ]

@@ -37,7 +37,7 @@
                     </li>
                 {% elif user.is_customer %}
                     <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                        <a class="nav-link" href="{% url 'profile' user.pk %}">Profile</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="{% url 'my_bookings' user.pk %}">My bookings</a>
