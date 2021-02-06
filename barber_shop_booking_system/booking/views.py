@@ -17,8 +17,7 @@ class UserBookingListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     template_name = 'booking/my_bookings.html'
     context_object_name = 'bookings'
     ordering = ['-booking_date', '-booking_time']
-    # paginate_by = 10
-    # deal with pagination later
+    paginate_by = 5
 
     def get_queryset(self):
         query_customer = get_object_or_404(CustomerInfo, pk=self.kwargs.get('pk'))
@@ -108,8 +107,7 @@ class BackStageBookingListView(LoginRequiredMixin, UserPassesTestMixin, ListView
     template_name = 'booking/back_stage_bookings.html'
     context_object_name = 'bookings'
     ordering = ['-booking_date', '-booking_time']
-    # paginate_by = 10
-    # deal with pagination later
+    paginate_by = 5
 
     def get_queryset(self):
         url_query_status = self.request.GET.get('status')
