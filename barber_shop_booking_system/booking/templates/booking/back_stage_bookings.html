@@ -1,74 +1,38 @@
 {% extends "booking/base.html" %}
 {% block content %}
-
+    <div>
+        <a href="{% url 'back_stage_bookings' %}"><button class="btn btn-primary">All</button></a>
+        <a href="?status=pending"><button class="btn btn-primary">Pending</button></a>
+        <a href="?status=confirmed"><button class="btn btn-primary">Confirmed</button></a>
+        <a href="?status=completed"><button class="btn btn-primary">Completed</button></a>
+        <a href="?status=cancelled"><button class="btn btn-primary">Cancelled</button></a>
+    </div>
+    <h2 id="queryStatus"></h2>
     {% if not bookings  %}
         <h1>No booking</h1>
     {% else %}
         <div>
-            <div>
-                <h2>Pending</h2>
-                {% for booking in bookings %}
-                    {% if booking.status == 'pending' %}
-                        <p>Date: {{ booking.customer.user.username }}</p>
-                        <p>Date: {{ booking.customer.user.email }}</p>
-                        <p>Date: {{ booking.customer.mobile_number }}</p>
-                        <p>Date: {{ booking.booking_date }}</p>
-                        <p>Time: {{ booking.booking_time }}</p>
-                        <p>Type: {{ booking.type }}</p>
-                        <p>Additional Messages: {{ booking.additional_massages }}</p>
-                        <a href="{% url 'booking_detail' booking.pk %}">Detail</a>
-                    {% endif %}
-                {% endfor %}
-            </div>
-
-            <div>
-                <h2>Confirmed</h2>
-                {% for booking in bookings %}
-                    {% if booking.status == 'confirmed' %}
-                        <p>Date: {{ booking.customer.user.username }}</p>
-                        <p>Date: {{ booking.customer.user.email }}</p>
-                        <p>Date: {{ booking.customer.mobile_number }}</p>
-                        <p>Date: {{ booking.booking_date }}</p>
-                        <p>Time: {{ booking.booking_time }}</p>
-                        <p>Type: {{ booking.type }}</p>
-                        <p>Additional Messages: {{ booking.additional_massages }}</p>
-                        <a href="{% url 'booking_detail' booking.pk %}">Detail</a>
-                    {% endif %}
-                {% endfor %}
-            </div>
-
-            <div>
-                <h2>Completed</h2>
-                {% for booking in bookings %}
-                    {% if booking.status == 'completed' %}
-                        <p>Date: {{ booking.customer.user.username }}</p>
-                        <p>Date: {{ booking.customer.user.email }}</p>
-                        <p>Date: {{ booking.customer.mobile_number }}</p>
-                        <p>Date: {{ booking.booking_date }}</p>
-                        <p>Time: {{ booking.booking_time }}</p>
-                        <p>Type: {{ booking.type }}</p>
-                        <p>Additional Messages: {{ booking.additional_massages }}</p>
-                        <a href="{% url 'booking_detail' booking.pk %}">Detail</a>
-                    {% endif %}
-                {% endfor %}
-            </div>
-
-            <div>
-                <h2>Cancelled</h2>
-                {% for booking in bookings %}
-                    {% if booking.status == 'cancelled' %}
-                        <p>Date: {{ booking.customer.user.username }}</p>
-                        <p>Date: {{ booking.customer.user.email }}</p>
-                        <p>Date: {{ booking.customer.mobile_number }}</p>
-                        <p>Date: {{ booking.booking_date }}</p>
-                        <p>Time: {{ booking.booking_time }}</p>
-                        <p>Type: {{ booking.type }}</p>
-                        <p>Additional Messages: {{ booking.additional_massages }}</p>
-                        <a href="{% url 'booking_detail' booking.pk %}">Detail</a>
-                    {% endif %}
-                {% endfor %}
-            </div>
+            {% for booking in bookings %}
+                    <p>Username: {{ booking.customer.user.username }}</p>
+                    <p>Email: {{ booking.customer.user.email }}</p>
+                    <p>Phone: {{ booking.customer.mobile_number }}</p>
+                    <p>Date: {{ booking.booking_date }}</p>
+                    <p>Time: {{ booking.booking_time }}</p>
+                    <p>Type: {{ booking.type }}</p>
+                    <p>Additional Messages: {{ booking.additional_massages }}</p>
+                    <a href="{% url 'booking_detail' booking.pk %}">Detail</a>
+            {% endfor %}
         </div>
     {% endif %}
 
+    <script>
+        let params = new URLSearchParams(document.location.search);
+        let status = params.get('status')
+
+        if (status === null) {
+            status = 'all'
+        }
+        let heading = document.querySelector('#queryStatus');
+        heading.innerHTML = status;
+    </script>
 {% endblock %}

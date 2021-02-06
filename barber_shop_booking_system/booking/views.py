@@ -22,7 +22,12 @@ class UserBookingListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
 
     def get_queryset(self):
         query_customer = get_object_or_404(CustomerInfo, pk=self.kwargs.get('pk'))
-        return Booking.objects.filter(customer=query_customer).order_by('-pk')
+
+        url_query_status = self.request.GET.get('status')
+        if not url_query_status:
+            return Booking.objects.filter(customer=query_customer).order_by('-pk')
+        else:
+            return Booking.objects.filter(customer=query_customer, status=url_query_status).order_by('-pk')
 
     def test_func(self):
         query_user = get_object_or_404(CustomerInfo, pk=self.kwargs.get('pk')).user
@@ -107,7 +112,11 @@ class BackStageBookingListView(LoginRequiredMixin, UserPassesTestMixin, ListView
     # deal with pagination later
 
     def get_queryset(self):
-        return Booking.objects.filter().order_by('-pk')
+        url_query_status = self.request.GET.get('status')
+        if not url_query_status:
+            return Booking.objects.filter().order_by('-pk')
+        else:
+            return Booking.objects.filter(status=url_query_status).order_by('-pk')
 
     def test_func(self):
         return self.request.user.is_staff or self.request.user.is_barber
