@@ -1,19 +1,19 @@
 ## Back-End
 
 1. booking types should be selection not string
-2. pagination
-3. title in different pages
-4. datetime present and edit issue, as well as the timezone issue
-5. have a setting area, allows barber shop set up the opening hours and timezone
-6. booking cancel button need a confirmation modal
-7. booking date and booking time does not show constraint, because the input of two fields rely on
+2. title in different pages
+3. datetime present and edit issue, as well as the timezone issue
+4. have a setting area, allows barber shop set up the opening hours and timezone
+5. booking cancel button need a confirmation modal
+6. booking date and booking time does not show constraint, because the input of two fields rely on
 the date input and choice input. It might be able to be changed through js, which I will look into that next.
-8. use email not username in the login page
-11. add a different user page for admin/barber
-12. add an email response when booking is confirmed
-13. user password reset, authentication and confirmation
-14. limit the number that user can make booking at the same time
-
+7. add a different user page for admin/barber
+8. add an email response when booking is confirmed
+9. user password reset, authentication and confirmation
+10. limit the number that user can make booking at the same time
+11. add user profile and its link to the backstage_booking page
+12. add booking information to user profile
+13. make a customer list view
 
 ## Front-End
 1. using js to disable the unavailable booking date/time
