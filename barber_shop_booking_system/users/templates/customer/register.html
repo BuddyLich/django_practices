@@ -1,18 +1,30 @@
 {% extends "booking/base.html" %}
-{% load crispy_forms_tags %}
 {% block content %}
-    <div>
-        <form method="POST">
-            {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-r">
-                    {{ user_form|crispy }}
-                    {{ customer_form|crispy }}
-                </legend>
-            </fieldset>
-            <div class="form-group">
-            <button class="btn btn-outline-info" type="submit">Sign Up</button>
+    <div class="login-background">
+        <div class="register-form">
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    {{ customer_form }}
+                    {{ user_form }}
+                </fieldset>
+                <div class="form-group">
+                <button class="register-btn" type="submit">Sign Up</button>
+            </div>
+            </form>
+            {% if messages %}
+                {% for message in messages %}
+                     <div class="alert
+                         {% if message.tags == 'error' %}
+                            alert-danger
+                         {% else %}
+                            alert-{{ message.tags }}
+                         {% endif %}">
+                             {{ message|safe }}
+                     </div>
+                {% endfor %}
+            {% endif %}
         </div>
-        </form>
     </div>
+
 {% endblock %}

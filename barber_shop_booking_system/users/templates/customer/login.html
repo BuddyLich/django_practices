@@ -3,16 +3,27 @@
 
 <div class="login-background">
     <div class="loginForm">
-        <form method="POST" id="loginForm">
-        {% csrf_token %}
-        <fieldset class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
                 {{ form }}
-        </fieldset>
-        <div class="form-group">
-            <button class="login-btn" type="submit">Login</button>
-        </div>
+            </fieldset>
+            <div class="form-group">
+                <button class="login-btn" type="submit">Login</button>
+            </div>
         </form>
+        {% if messages %}
+            {% for message in messages %}
+                 <div class="alert
+                     {% if message.tags == 'error' %}
+                        alert-danger
+                     {% else %}
+                        alert-{{ message.tags }}
+                     {% endif %}">
+                         {{ message|safe }}
+                 </div>
+            {% endfor %}
+        {% endif %}
     </div>
 </div>
-    </div>
 {% endblock %}

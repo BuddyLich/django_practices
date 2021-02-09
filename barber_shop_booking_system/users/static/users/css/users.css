@@ -1,3 +1,6 @@
+
+/* login page */
+
 .login-background {
   background-image: url('/static/users/images/login_background.jpeg');
   background-repeat: no-repeat;
@@ -51,7 +54,8 @@ input.login-input:focus {
   box-shadow: 0 0 0 2pt #D2691E;
 }
 
-.login-btn {
+.login-btn,
+.register-btn {
   background-color: #FF7F50;
   padding: 10px 25px;
   margin: 22px 10px;
@@ -64,7 +68,16 @@ input.login-input:focus {
   transition: all 0.4s ease;
 }
 
-.login-btn:hover {
+.login-btn:hover,
+.register-btn:hover {
   background-color: #e96745;
   border-radius: 10px;
+}
+
+.errorlist li{
+  list-style-type: none;
+}
+/* register page */
+.alert-error {
+  background-color: pink;
 }

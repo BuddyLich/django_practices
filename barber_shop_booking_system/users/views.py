@@ -7,7 +7,6 @@ from django.contrib.auth import views as auth_views
 from .forms import UserLoginForm
 
 
-
 def register(request):
     if request.method == 'POST':
         user_form = UserRegisterForm(request.POST)
@@ -24,7 +23,7 @@ def register(request):
             messages.success(request, 'Account Created!')
             return redirect('login')
         else:
-            messages.error(request, 'Account Created Failed!')
+            messages.error(request, 'Ops! Please check your register detail again.')
             return redirect('register')
 
     else:
