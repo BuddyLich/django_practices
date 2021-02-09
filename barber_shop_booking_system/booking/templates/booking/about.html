@@ -1,4 +1,40 @@
 {% extends "booking/base.html" %}
 {% block content %}
-<h2>About Page</h2>
+<div class="hero aboutPage">
+    <div class="container">
+        <h1>For cuts and colors that best suit you</h1>
+    </div>
+</div>
+
+<section class="container content middle">
+    <h2>About Us</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis eaque magnam officia quam recusandae sed suscipit? Aspernatur at aut, dicta ea et, fugit ipsa iusto quam quasi quidem quis quisquam ratione soluta vel veritatis? Architecto, atque cumque deleniti eaque et exercitationem expedita illum laborum nisi odio omnis optio, qui quis quod sed soluta, veritatis voluptate voluptatum. Dolorem doloribus pariatur quidem. Dolor dolore eum nihil officia possimus repellat, similique voluptas! A accusantium, aut beatae commodi dolorem enim, eos eum id ipsa, iusto quae quaerat tenetur! Distinctio expedita id incidunt laboriosam minima omnis quis saepe suscipit, tempore tenetur! Est nam quia sunt!</p>
+</section>
+
+<div class="container">
+    <div class="row justify-content-around about-content">
+        <div class="col col-lg-5 col-md-5 col-sm-12 col-12">
+            <img src="/static/booking/images/barbershop_about_1.jpeg" alt="" class="img-fluid">
+        </div>
+        <div class="col col-lg-5 col-md-5 col-sm-12 col-12">
+            <h2>A breath of fresh hair</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus hic impedit odit quibusdam quis rerum temporibus tenetur veritatis vero voluptate.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur deserunt eveniet laboriosam, magni minus perferendis quod sit totam vel. Expedita.</p>
+            <a class="bookingBtn" href="{% url 'new_booking' %}">Get started</a>
+        </div>
+    </div>
+
+    <div class="row justify-content-around about-content">
+        <div class="col col-lg-5 col-md-5 col-sm-12 col-12">
+            <h2>Great haircuts-It’s what we do</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque commodi eum harum. Enim, ex, quia?</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aspernatur blanditiis commodi cum deleniti dolor eligendi et fuga molestiae, mollitia, nemo neque odit, optio perferendis ratione sequi tempore voluptatem! Expedita?</p>
+            <a class="bookingBtn" href="{% url 'new_booking' %}">Get started</a>
+        </div>
+        <div class="col col-lg-5 col-md-5 col-sm-12 col-12">
+            <img src="/static/booking/images/barbershop_about_2.jpeg" alt="" class="img-fluid">
+        </div>
+    </div>
+</div>
+
 {% endblock %}

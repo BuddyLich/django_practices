@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap');
 
+
 .navbar-brand {
   font-family: 'Hammersmith One', sans-serif;
   font-weight: bold;
@@ -11,6 +12,11 @@
   font-family: 'Hammersmith One', sans-serif;
   font-size: 1.2rem;
   margin: 0 10px;
+}
+
+.collapse.show ul li {
+  margin: 15px 0;
+  text-align: center;
 }
 
 .bookingBtn {
@@ -64,13 +70,15 @@
 }
 
 .hero h1 {
-  font-size: 46px;
+  font-size: 3vw;
   margin: -20px 0 20px;
+  font-weight: bold;
 }
 
 .hero p {
-  font-size: 20px;
+  font-size: 1.5vw;
   letter-spacing: 1px;
+
 }
 
 .content h2, .content h3 {
@@ -86,6 +94,8 @@
 
 .container.content {
   margin-bottom: 100px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .footer {
@@ -99,4 +109,39 @@
 
 .footer-left {
   maximum
+}
+
+/* about_page */
+.hero.aboutPage {
+  background-image: url('/static/booking/images/barbershop_about_hero.jpeg');
+  background-position: 10% 40%;
+  position: relative;
+}
+
+.hero.aboutPage .container {
+  max-width: 24%;
+  position: absolute;
+  left: 9%;
+  text-align: left;
+}
+
+.container.content.middle {
+  margin-bottom: 100px;
+}
+
+/* about page sub heading */
+.container.content.middle h2 {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.col img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.about-content {
+  overflow: hidden;
+  margin: 40px 0;
 }
