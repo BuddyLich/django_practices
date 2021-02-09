@@ -22,10 +22,49 @@
   z-index: 1;
 }
 
-.login-background div{
+.login-background div {
   z-index:3;
 }
 
-.loginForm {
-  z-index: 3;
+.form-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width:
+}
+
+input.login-input {
+  margin: 7px;
+  width: 260px;
+  height: 35px;
+  max-width: 200x;
+  min-width: 50px;
+  border: none;
+  border-radius: 2px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+input.login-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2pt #D2691E;
+}
+
+.login-btn {
+  background-color: #FF7F50;
+  padding: 10px 25px;
+  margin: 22px 10px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  transition: all 0.4s ease;
+}
+
+.login-btn:hover {
+  background-color: #e96745;
+  border-radius: 10px;
 }

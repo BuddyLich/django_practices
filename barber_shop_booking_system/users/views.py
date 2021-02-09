@@ -3,6 +3,9 @@ from django.contrib import messages
 from .forms import UserRegisterForm, UserUpdateForm, CustomerRegisterForm, CustomerUpdateForm
 from django.contrib.auth.decorators import login_required
 from .models import User, CustomerInfo
+from django.contrib.auth import views as auth_views
+from .forms import UserLoginForm
+
 
 
 def register(request):
@@ -80,3 +83,8 @@ def profile_update(request, pk):
         }
 
         return render(request, 'customer/profile_update.html', context=context)
+
+
+class UserLoginView(auth_views.LoginView):
+    model = User
+    form_class = UserLoginForm
