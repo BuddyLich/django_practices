@@ -81,3 +81,35 @@ input.login-input:focus {
 .alert-error {
   background-color: pink;
 }
+
+/* logout page */
+.crud-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  position: relative;
+}
+
+.logout-content {
+  position: absolute;
+  top: 30%;
+
+}
+
+.logout-content div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.logout-content div .login-btn {
+  margin-top: 5px;
+}
+
+.logout-content p {
+  font-size: 1.2rem;
+}

@@ -1,7 +1,13 @@
 {% extends "booking/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-    <div class="content-section">
-        <h2>You have been logged out</h2>
+<div class="crud-content">
+    <div class="logout-content">
+        <h1>You have been log out</h1>
+        <div>
+            <p>A bit more to do?</p>
+            <a href="{% url 'login' %}"><button class="login-btn">Login</button></a>
+        </div>
     </div>
+</div>
 {% endblock %}

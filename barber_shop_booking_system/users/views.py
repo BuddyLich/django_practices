@@ -71,7 +71,11 @@ def profile_update(request, pk):
         if user_form.is_valid() and customer_form.is_valid():
             user_form.save()
             customer_form.save()
+            messages.success(request, 'Profile updated!')
             return redirect('profile', pk=pk)
+        else:
+            messages.error(request, 'Ops! Please check your profile detail again.')
+            return redirect('profile_update', pk=pk)
 
     else:
         user_form = UserUpdateForm(instance=profile_user)
