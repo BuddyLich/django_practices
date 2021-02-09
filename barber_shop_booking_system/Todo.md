@@ -1,7 +1,7 @@
 ## Back-End
 
 1. booking types should be selection not string
-2. title in different pages
+2. title in different pages  
 3. datetime present and edit issue, as well as the timezone issue
 4. have a setting area, allows barber shop set up the opening hours and timezone
 5. booking cancel button need a confirmation modal
