@@ -126,7 +126,7 @@ input.login-input:focus {
 .profile-content {
   position:absolute;
   width: 400px;
-
+  color: dimgrey;
   background: linear-gradient(
     to right bottom,
     rgba(255, 255, 255, 0.7),
@@ -138,6 +138,8 @@ input.login-input:focus {
 }
 
 .profile-content h2 {
+  color: black;
+  font-weight: bold;
   text-align: center;
   padding: 20px 0;
 }
@@ -159,3 +161,5 @@ input.login-input:focus {
 .info_p {
   flex: 1;
 }
+
+/* profile update */
