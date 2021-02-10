@@ -1,18 +1,25 @@
 {% extends "booking/base.html" %}
 {% block content %}
-    <div>
-        <div>
-            <p>Username: {{ username }}</p>
-            <p>Email: {{ email }}</p>
-            <p>Phone: {{ phone }}</p>
+<div class="crud-content profile">
+    <div class="profile-content">
+        <div class="field">
+            <p class="label_p">Username:&nbsp&nbsp</p>
+            <p class="info_p">{{ username }}</p>
+        </div>
+        <div class="field">
+            <p class="label_p">Email:&nbsp&nbsp</p>
+            <p class="info_p">{{ email }}</p>
+        </div>
+        <div class="field">
+            <p class="label_p">Phone:&nbsp&nbsp</p>
+            <p class="info_p">{{ phone }}</p>
         </div>
 
         {% if user == profile_user %}
-            <div class="form-group">
-                <a href="{% url 'profile_update' user.customer_id.pk %}"><button class="btn btn-primary">Edit Profile</button></a>
-            </div>
+        <a href="{% url 'profile_update' user.customer_id.pk %}"><button class="btn btn-primary">Edit Profile</button></a>
         {% endif %}
 
 
     </div>
+</div>
 {% endblock %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect
 from django.contrib import messages
 from .forms import UserRegisterForm, UserUpdateForm, CustomerRegisterForm, CustomerUpdateForm
 from django.contrib.auth.decorators import login_required
@@ -91,3 +91,8 @@ def profile_update(request, pk):
 class UserLoginView(auth_views.LoginView):
     model = User
     form_class = UserLoginForm
+
+    # def get(self, request, *args, **kwargs):
+    #     if request.user.is_authenticated():
+    #         return HttpResponseRedirect('home')
+    #     return super(UserLoginView, self).get(request, *args, **kwargs)

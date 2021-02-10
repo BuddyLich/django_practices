@@ -113,3 +113,37 @@ input.login-input:focus {
 .logout-content p {
   font-size: 1.2rem;
 }
+
+/* user profile page */
+
+.crud-content.profile {
+  background-image: url('/static/users/images/profile-background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 70% center;
+}
+
+.profile-content {
+  position:absolute;
+  left: 55%;
+  top: 30%;
+  width: 400px;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
+
+  border-radius: 7px;;
+  padding: 50px 30px;
+
+
+}
+
+.field {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+

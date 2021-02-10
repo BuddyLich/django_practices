@@ -25,6 +25,9 @@ urlpatterns = [
     path('register/', user_view.register, name='register'),
     path('profile/<int:pk>', user_view.profile, name='profile'),
     path('profile/<int:pk>/update', user_view.profile_update, name='profile_update'),
-    path('login/', user_view.UserLoginView.as_view(template_name='customer/login.html'), name='login'),
+    path('login/', user_view.UserLoginView.as_view(
+        template_name='customer/login.html',
+        redirect_authenticated_user=True
+    ), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='customer/logout.html'), name='logout')
 ]
