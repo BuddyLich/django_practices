@@ -13,10 +13,11 @@
   margin: 0 10px;
 }
 
-.collapse.show ul li {
-  margin: 15px 0;
+
+.navbar .navbar-collapse {
   text-align: center;
 }
+
 
 .bookingBtn {
   background-color: #e96745;

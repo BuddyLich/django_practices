@@ -130,6 +130,12 @@
 .booking-list-item {
   border: none;
   border-bottom: 1px solid lightgrey;
+  transition: all 0.4s ease;
+}
+
+.booking-list-item:hover {
+  color: #e96745;
+  transition: all 0.4s ease;
 }
 
 .booking-filter {
