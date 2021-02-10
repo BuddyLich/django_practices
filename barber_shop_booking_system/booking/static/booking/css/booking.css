@@ -110,3 +110,73 @@
   resize: none;
 }
 
+/* booking list view */
+.listview {
+  display: block;
+  position: relative;
+  top: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80vh;
+  min-width: 30vh;
+}
+
+.booking-list h1 {
+  text-align: center;
+  font-family: 'Hammersmith One', sans-serif;
+  font-weight: bold;
+}
+
+.booking-list-item {
+  border: none;
+  border-bottom: 1px solid lightgrey;
+}
+
+.booking-filter {
+  margin: auto;
+}
+
+.query-btn {
+  background-color: lightgrey;
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 5px;
+  min-width: 120px;
+  max-width: 100px;
+  padding: 10px 20px;
+  margin: 5px 10px;
+  transition: all 0.3s ease;
+}
+
+.query-btn:hover {
+  background-color: #e96745;
+  transition: all 0.3s ease;
+}
+
+.query-btn.active {
+  background-color: #e96745;
+}
+
+.pagination-section {
+  padding: 20px 10px;
+}
+
+.page-btn {
+  background-color: dimgrey;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  max-width: 6rem;
+  min-width: 2rem;
+  transition: all 0.3s ease;
+}
+
+.page-btn:hover {
+  background-color: #e96745;
+  transition: all 0.3s ease;
+}
+
+.page-btn.active {
+  background-color: #e96745;
+}
