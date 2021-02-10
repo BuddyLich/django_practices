@@ -19,18 +19,19 @@
             <p class="label_p">Status:</p>
             <p class="info_p">{{ object.status }}</p>
         </li>
-        <h4>Additional Message:</h4>
+
+        <h3>Additional Message:</h3>
             <p>{{ object.additional_messages }}</p>
 
     {% if user == object.customer.user %}
         {% if object.status == 'pending' %}
             <div>
                 <a href="{% url 'update_booking' object.pk %}"><button class="confirm-btn">Update</button></a>
-                <a href="{% url 'cancel_booking' object.pk %}"><button class="cancel-btn">Cancel</button></a>
+                <button type="button" class="cancel-btn" data-bs-toggle="modal" data-bs-target="#cancelBookingModal">Cancel</button>
             </div>
         {% elif object.status == 'confirmed' %}
             <div>
-                <a href="{% url 'cancel_booking' object.pk %}"><button class="btn btn-danger">Cancel</button></a>
+            <button type="button" class="cancel-btn" data-bs-toggle="modal" data-bs-target="#cancelBookingModal">Cancel</button>
             </div>
         {% endif %}
     {% endif %}
@@ -39,15 +40,36 @@
         {% if object.status == 'pending' %}
             <div>
                 <a href="{% url 'confirm_booking' object.pk %}"><button class="confirm-btn">Confirm Booking</button></a>
-                <a href="{% url 'cancel_booking' object.pk %}"><button class="btn btn-danger">Cancel</button></a>
+                <a href="{% url 'cancel_booking' object.pk %}"><button class="cancel-btn">Cancel</button></a>
             </div>
         {% elif object.status == 'confirmed' %}
             <div>
-                <a href="#"><button class="confirm-btn">Complete</button></a>
+                <button type="button" class="cancel-btn" data-bs-toggle="modal" data-bs-target="#cancelBookingModal">Cancel</button>
             </div>
         {% endif %}
     {% endif %}
     </ul>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="cancelBookingModal" tabindex="-1" aria-labelledby="cancelBookingModalTitle" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cancelBookingModalTitle">Cancel the booking?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure that you want to cancel the booking?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="confirm-btn" data-bs-dismiss="modal">Close</button>
+                <a href="{% url 'cancel_booking' object.pk %}"><button class="cancel-btn">Yes, cancel the booking</button></a>
+            </div>
+        </div>
+    </div>
 </div>
 
 {% endblock %}

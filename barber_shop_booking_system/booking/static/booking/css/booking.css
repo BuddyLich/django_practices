@@ -21,6 +21,13 @@
   padding: 50px 30px;
 }
 
+.booking-content h2, .booking-content h3 {
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px 0;
+}
+
 .booking-content .field {
   display: flex;
   flex-direction: row;
