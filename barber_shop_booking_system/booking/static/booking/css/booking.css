@@ -49,7 +49,7 @@
 }
 
 .confirm-btn:hover {
-  background-color: #DC143C;
+  background-color: #e96745;
   border-radius: 10px;
 }
 
@@ -71,4 +71,35 @@
   border-radius: 10px;
 }
 
+/* booking detail update */
+
+.booking-input {
+  margin: 7px;
+  width: 260px;
+  height: 35px;
+  max-width: 200x;
+  min-width: 50px;
+  border-radius: 2px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.booking-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2pt #FF7F50;
+}
+
+.date-input {
+  border: 1px solid #ccc;
+}
+
+.selection-input {
+  height: 40px;
+  background-color: white;
+}
+
+.textarea-input {
+  height: 200px;
+  resize: none;
+}
 

@@ -44,7 +44,7 @@ class CustomerRegisterForm(forms.ModelForm):
 
 
 class UserUpdateForm(forms.ModelForm):
-    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'login-input'}))
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'booking-input selection-input'}))
 
     class Meta:
         model = User
@@ -52,7 +52,7 @@ class UserUpdateForm(forms.ModelForm):
 
 
 class CustomerUpdateForm(forms.ModelForm):
-    mobile_number = forms.CharField(widget=forms.TextInput(attrs={'class': 'login-input'}))
+    mobile_number = forms.CharField(widget=forms.TextInput(attrs={'class': 'booking-input'}))
 
     class Meta:
         model = CustomerInfo

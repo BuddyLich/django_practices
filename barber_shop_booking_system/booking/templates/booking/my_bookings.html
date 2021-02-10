@@ -16,7 +16,7 @@
                     <p>Date: {{ booking.booking_date }}</p>
                     <p>Time: {{ booking.booking_time }}</p>
                     <p>Type: {{ booking.type }}</p>
-                    <p>Additional Messages: {{ booking.additional_massages }}</p>
+                    <p>Additional Messages: {{ booking.additional_messages }}</p>
                     <a href="{% url 'booking_detail' booking.pk %}">Detail</a>
             {% endfor %}
         </div>

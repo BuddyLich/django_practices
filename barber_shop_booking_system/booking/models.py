@@ -16,7 +16,7 @@ class Booking(models.Model):
     booking_time = models.CharField(max_length=12, default='')
 
     type = models.CharField(max_length=32, default='')
-    additional_massages = models.TextField(max_length=256, default="")
+    additional_messages = models.TextField(max_length=256, default="")
     is_online_booking = models.BooleanField(default=False)
 
     status = models.CharField(max_length=12, default='pending')
