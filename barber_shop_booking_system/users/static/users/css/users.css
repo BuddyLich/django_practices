@@ -125,9 +125,8 @@ input.login-input:focus {
 
 .profile-content {
   position:absolute;
-  left: 55%;
-  top: 30%;
   width: 400px;
+
   background: linear-gradient(
     to right bottom,
     rgba(255, 255, 255, 0.7),
@@ -136,14 +135,27 @@ input.login-input:focus {
 
   border-radius: 7px;;
   padding: 50px 30px;
+}
 
+.profile-content h2 {
+  text-align: center;
+  padding: 20px 0;
+}
 
+.profile-content login-btn {
+  justify-content: center;
 }
 
 .field {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
+  justify-content: space-evenly;
 }
 
+.label_p {
+  flex: 3;
+}
+
+.info_p {
+  flex: 1;
+}
