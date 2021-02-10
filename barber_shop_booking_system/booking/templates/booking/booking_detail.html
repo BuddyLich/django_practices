@@ -1,23 +1,36 @@
 {% extends "booking/base.html" %}
 {% block content %}
-
-    <div>
-        <p>Date: {{ object.booking_date }}</p>
-        <p>Time: {{ object.booking_time }}</p>
-        <p>Type: {{ object.type }}</p>
-        <p>Additional Message: {{ object.additional_massages }}</p>
-        <p>Booking Status: {{ object.status }}</p>
-    </div>
+<div class="crud-content booking-detail">
+    <ul class="booking-content">
+        <h2>Booking Detail</h2>
+        <li class="field">
+            <p class="label_p">Date:</p>
+            <p class="info_p">{{ object.booking_date }}</p>
+        </li>
+        <li class="field">
+            <p class="label_p">Time:</p>
+            <p class="info_p">{{ object.booking_time }}</p>
+        </li>
+        <li class="field">
+            <p class="label_p">Booking Type:</p>
+            <p class="info_p">{{ object.type }}</p>
+        </li>
+        <li class="field">
+            <p class="label_p">Status:</p>
+            <p class="info_p">{{ object.status }}</p>
+        </li>
+        <h4>Additional Message:</h4>
+            <p>{{ object.additional_massages }}</p>
 
     {% if user == object.customer.user %}
         {% if object.status == 'pending' %}
             <div>
-                <a href="{% url 'update_booking' object.pk %}"><button class="btn btn-primary">Update Booking</button></a>
-                <a href="{% url 'cancel_booking' object.pk %}"><button class="btn btn-danger">Cancel Booking</button></a>
+                <a href="{% url 'update_booking' object.pk %}"><button class="confirm-btn">Update</button></a>
+                <a href="{% url 'cancel_booking' object.pk %}"><button class="cancel-btn">Cancel</button></a>
             </div>
         {% elif object.status == 'confirmed' %}
             <div>
-                <a href="{% url 'cancel_booking' object.pk %}"><button class="btn btn-danger">Cancel Booking</button></a>
+                <a href="{% url 'cancel_booking' object.pk %}"><button class="btn btn-danger">Cancel</button></a>
             </div>
         {% endif %}
     {% endif %}
@@ -25,13 +38,16 @@
     {% if user.is_staff or user.is_barber  %}
         {% if object.status == 'pending' %}
             <div>
-                <a href="{% url 'confirm_booking' object.pk %}"><button class="btn btn-primary">Confirm Booking</button></a>
+                <a href="{% url 'confirm_booking' object.pk %}"><button class="confirm-btn">Confirm Booking</button></a>
+                <a href="{% url 'cancel_booking' object.pk %}"><button class="btn btn-danger">Cancel</button></a>
             </div>
         {% elif object.status == 'confirmed' %}
             <div>
-                <a href="#"><button class="btn btn-primary">Complete</button></a>
+                <a href="#"><button class="confirm-btn">Complete</button></a>
             </div>
         {% endif %}
     {% endif %}
+    </ul>
+</div>
 
 {% endblock %}

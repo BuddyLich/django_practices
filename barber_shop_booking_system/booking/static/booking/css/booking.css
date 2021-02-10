@@ -1,0 +1,74 @@
+/* booking detail page */
+
+.crud-content.booking-detail {
+  background-image: url('/static/booking/images/booking_detail_background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 70% center;
+}
+
+.booking-content {
+  position:absolute;
+  width: 400px;
+  color: black;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0.9)
+  );
+
+  border-radius: 7px;;
+  padding: 50px 30px;
+}
+
+.booking-content .field {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.booking-content .field .label_p {
+  flex: 3;
+}
+
+.booking-content .field .info_p {
+  flex: 2;
+}
+
+.confirm-btn {
+  background-color: #FF7F50;
+  padding: 10px 25px;
+  margin: 22px 10px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  transition: all 0.4s ease;
+}
+
+.confirm-btn:hover {
+  background-color: #DC143C;
+  border-radius: 10px;
+}
+
+.cancel-btn {
+  background-color: black;
+  padding: 10px 25px;
+  margin: 22px 10px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  transition: all 0.4s ease;
+}
+
+.cancel-btn:hover {
+  background-color: #FF7F50;
+  border-radius: 10px;
+}
+
+

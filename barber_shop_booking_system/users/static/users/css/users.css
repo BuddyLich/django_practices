@@ -148,18 +148,16 @@ input.login-input:focus {
   justify-content: center;
 }
 
-.field {
+.profile-content .field {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
 
-.label_p {
+.profile-content .label_p {
   flex: 3;
 }
 
-.info_p {
+.profile-content .info_p {
   flex: 1;
 }
-
-/* profile update */
