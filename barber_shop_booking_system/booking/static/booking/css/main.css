@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap');
+
+.navbar-brand {
+  font-family: 'Hammersmith One', sans-serif;
+  font-weight: bold;
+  font-size: 2rem;
+  margin: 0px 40px;
+}
+
+.nav-link {
+  font-family: 'Hammersmith One', sans-serif;
+  font-size: 1.2rem;
+  margin: 0 10px;
+}
+
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+
+
+.bookingBtn {
+  background-color: #e96745;
+  padding: 12px 20px;
+  margin: 22px 10px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  border-radius: 10px;
+  transition: all 0.4s ease;
+}
+
+.bookingBtn:hover {
+  background-color: black;
+  padding: 12px 20px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  border-radius: 10px;
+}
+
+/* homepage */
+.hero {
+  background-image: url('/static/booking/images/barbershop.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 70% center;
+  height: 80vh;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  margin-bottom: 20px;
+  z-index: -2;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0, 0.5);
+  z-index: -1;
+}
+
+.hero h1 {
+  font-size: 3vw;
+  margin: -20px 0 20px;
+  font-weight: bold;
+}
+
+.hero p {
+  font-size: 1.5vw;
+  letter-spacing: 1px;
+
+}
+
+.content h2, .content h3 {
+  font-size: 150%;
+  margin: 20px 0;
+}
+
+.content p {
+  color: #555;
+  line-height: 30px;
+  letter-spacing: 1.5px;
+}
+
+.container.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 100px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+  color: white;
+  background-color: dimgrey;
+}
+
+.footer-left {
+  maximum
+}
+
+/* about_page */
+.hero.aboutPage {
+  background-image: url('/static/booking/images/barbershop_about_hero.jpeg');
+  background-position: 10% 40%;
+  position: relative;
+}
+
+.hero.aboutPage .container {
+  max-width: 24%;
+  position: absolute;
+  left: 9%;
+  text-align: left;
+}
+
+.container.content.middle {
+  margin-bottom: 100px;
+}
+
+/* about page sub heading */
+.container.content.middle h2 {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.col img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 180px;
+  align-items: center;
+}
+
+.about-content {
+  margin: 40px 0 40px 0;
+  align-items: center;
+}
+
+.col .bookingBtn {
+  font-size: 1rem
+}

@@ -1,17 +1,31 @@
 {% extends "booking/base.html" %}
-{% load crispy_forms_tags %}
 {% block content %}
-    <div>
+
+<div class="crud-content booking-detail">
+    <div class="booking-content">
+        <h2>Booking</h2>
         <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-r">
-                    {{ form|crispy }}
-                </legend>
+            {{ form }}
             </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Booking</button>
-            </div>
+        <div class="form-group">
+            <button class="login-btn" type="submit">Confirm</button>
+        </div>
         </form>
+        {% if messages %}
+            {% for message in messages %}
+                 <div class="alert
+                     {% if message.tags == 'error' %}
+                        alert-danger
+                     {% else %}
+                        alert-{{ message.tags }}
+                     {% endif %}">
+                         {{ message|safe }}
+                 </div>
+            {% endfor %}
+        {% endif %}
     </div>
+</div>
+
 {% endblock %}

@@ -8,6 +8,16 @@ class DateInput(forms.DateInput):
 
 
 class BookingForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(BookingForm, self).__init__(*args, **kwargs)
+
+        self.fields['booking_date'].widget.attrs['class'] = "booking-input date-input"
+        self.fields['booking_time'].widget.attrs['class'] = "booking-input selection-input"
+        self.fields['type'].widget.attrs['class'] = "booking-input"
+
+        self.fields['additional_messages'].widget.attrs['cols'] = "25"
+        self.fields['additional_messages'].widget.attrs['rows'] = "40"
+        self.fields['additional_messages'].widget.attrs['class'] = "booking-input textarea-input"
 
     class Meta:
         TIME_CHOICE = [
@@ -33,7 +43,7 @@ class BookingForm(forms.ModelForm):
         ]
 
         model = Booking
-        fields = ['booking_date', 'booking_time',  'type', 'additional_massages']
+        fields = ['booking_date', 'booking_time',  'type', 'additional_messages']
 
         widgets = {
             'booking_date': DateInput,

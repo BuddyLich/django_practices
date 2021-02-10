@@ -12,6 +12,10 @@ def home(request):
     return render(request, 'booking/home.html')
 
 
+def about(request):
+    return render(request, 'booking/about.html')
+
+
 class UserBookingListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     model = Booking
     template_name = 'booking/my_bookings.html'

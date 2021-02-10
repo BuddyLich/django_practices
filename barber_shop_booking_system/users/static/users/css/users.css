@@ -1,0 +1,170 @@
+
+/* login page */
+
+.login-background {
+  background-image: url('/static/users/images/login_background.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom center;
+  height: 100vh;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+}
+
+.login-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.login-background div {
+  z-index:3;
+}
+
+.form-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width:
+}
+
+input.login-input {
+  margin: 7px;
+  width: 260px;
+  height: 35px;
+  max-width: 200x;
+  min-width: 50px;
+  border: none;
+  border-radius: 2px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+input.login-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2pt #D2691E;
+}
+
+.login-btn,
+.register-btn {
+  background-color: #FF7F50;
+  padding: 10px 25px;
+  margin: 22px 10px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  transition: all 0.4s ease;
+}
+
+.login-btn:hover,
+.register-btn:hover {
+  background-color: #e96745;
+  border-radius: 10px;
+}
+
+.errorlist li{
+  list-style-type: none;
+}
+/* register page */
+.alert-error {
+  background-color: pink;
+}
+
+/* logout page */
+.crud-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  position: relative;
+}
+
+.logout-content {
+  position: absolute;
+  top: 30%;
+
+}
+
+.logout-content div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.logout-content div .login-btn {
+  margin-top: 5px;
+}
+
+.logout-content p {
+  font-size: 1.2rem;
+}
+
+/* user profile page */
+
+.crud-content.profile {
+  background-image: url('/static/users/images/profile-background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 70% center;
+}
+
+.profile-content {
+  position:absolute;
+  width: 400px;
+  color: dimgrey;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
+
+  border-radius: 7px;;
+  padding: 50px 30px;
+}
+
+.profile-content h2 {
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.profile-content h2 {
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.profile-content login-btn {
+  justify-content: center;
+}
+
+.profile-content .field {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.profile-content .label_p {
+  flex: 3;
+}
+
+.profile-content .info_p {
+  flex: 1;
+}

@@ -1,102 +1,188 @@
-@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap');
+/* booking detail page */
 
-.navbar-brand {
-  font-family: 'Hammersmith One', sans-serif;
+.crud-content.booking-detail {
+  background-image: url('/static/booking/images/booking_detail_background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 70% center;
+}
+
+.booking-content {
+  position:absolute;
+  width: 400px;
+  color: black;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0.9)
+  );
+
+  border-radius: 7px;;
+  padding: 50px 30px;
+}
+
+.booking-content h2, .booking-content h3 {
+  color: black;
   font-weight: bold;
-  font-size: 2rem;
-  margin: 0px 40px;
+  text-align: center;
+  padding: 20px 0;
 }
 
-.nav-link {
-  font-family: 'Hammersmith One', sans-serif;
-  font-size: 1.2rem;
-  margin: 0 10px;
+.booking-content .field {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
-.bookingBtn {
-  background-color: #e96745;
-  padding: 12px 20px;
+.booking-content .field .label_p {
+  flex: 3;
+}
+
+.booking-content .field .info_p {
+  flex: 2;
+}
+
+.confirm-btn {
+  background-color: #FF7F50;
+  padding: 10px 25px;
   margin: 22px 10px;
   font-size: 1.4rem;
   font-weight: bold;
   text-decoration: none;
   color: white;
+  border: none;
   border-radius: 10px;
   transition: all 0.4s ease;
 }
 
-.bookingBtn:hover {
+.confirm-btn:hover {
+  background-color: #e96745;
+  border-radius: 10px;
+}
+
+.cancel-btn {
   background-color: black;
-  padding: 12px 20px;
+  padding: 10px 25px;
+  margin: 22px 10px;
   font-size: 1.4rem;
   font-weight: bold;
   text-decoration: none;
   color: white;
+  border: none;
+  border-radius: 10px;
+  transition: all 0.4s ease;
+}
+
+.cancel-btn:hover {
+  background-color: #FF7F50;
   border-radius: 10px;
 }
 
-/* homepage */
-.hero {
-  background-image: url('/static/booking/images/barbershop.jpeg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 70% center;
-  height: 80vh;
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+/* booking detail update */
+
+.booking-input {
+  margin: 7px;
+  width: 260px;
+  height: 35px;
+  max-width: 200x;
+  min-width: 50px;
+  border-radius: 2px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.booking-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2pt #FF7F50;
+}
+
+.date-input {
+  border: 1px solid #ccc;
+}
+
+.selection-input {
+  height: 40px;
+  background-color: white;
+}
+
+.textarea-input {
+  height: 200px;
+  resize: none;
+}
+
+/* booking list view */
+.listview {
+  display: block;
   position: relative;
-  margin-bottom: 20px;
-  z-index: -2;
+  top: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80vh;
+  min-width: 30vh;
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0, 0.5);
-  z-index: -1;
+.booking-list h1 {
+  text-align: center;
+  font-family: 'Hammersmith One', sans-serif;
+  font-weight: bold;
 }
 
-.hero h1 {
-  font-size: 46px;
-  margin: -20px 0 20px;
+.booking-list-item {
+  border: none;
+  border-bottom: 1px solid lightgrey;
+  transition: all 0.4s ease;
 }
 
-.hero p {
-  font-size: 20px;
-  letter-spacing: 1px;
+.booking-list-item:hover {
+  color: #e96745;
+  transition: all 0.4s ease;
 }
 
-.content h2, .content h3 {
-  font-size: 150%;
-  margin: 20px 0;
+.booking-filter {
+  margin: auto;
 }
 
-.content p {
-  color: #555;
-  line-height: 30px;
-  letter-spacing: 1.5px;
-}
-
-.container.content {
-  margin-bottom: 100px;
-}
-
-.footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 50px;
+.query-btn {
+  background-color: lightgrey;
   color: white;
-  background-color: dimgrey;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 5px;
+  min-width: 120px;
+  max-width: 100px;
+  padding: 10px 20px;
+  margin: 5px 10px;
+  transition: all 0.3s ease;
 }
 
-.footer-left {
-  maximum
+.query-btn:hover {
+  background-color: #e96745;
+  transition: all 0.3s ease;
+}
+
+.query-btn.active {
+  background-color: #e96745;
+}
+
+.pagination-section {
+  padding: 20px 10px;
+}
+
+.page-btn {
+  background-color: dimgrey;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  max-width: 6rem;
+  min-width: 2rem;
+  transition: all 0.3s ease;
+}
+
+.page-btn:hover {
+  background-color: #e96745;
+  transition: all 0.3s ease;
+}
+
+.page-btn.active {
+  background-color: #e96745;
 }

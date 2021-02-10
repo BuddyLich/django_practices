@@ -1,8 +1,10 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect
 from django.contrib import messages
 from .forms import UserRegisterForm, UserUpdateForm, CustomerRegisterForm, CustomerUpdateForm
 from django.contrib.auth.decorators import login_required
 from .models import User, CustomerInfo
+from django.contrib.auth import views as auth_views
+from .forms import UserLoginForm
 
 
 def register(request):
@@ -21,7 +23,7 @@ def register(request):
             messages.success(request, 'Account Created!')
             return redirect('login')
         else:
-            messages.error(request, 'Account Created Failed!')
+            messages.error(request, 'Ops! Please check your register detail again.')
             return redirect('register')
 
     else:
@@ -69,7 +71,11 @@ def profile_update(request, pk):
         if user_form.is_valid() and customer_form.is_valid():
             user_form.save()
             customer_form.save()
+            messages.success(request, 'Profile updated!')
             return redirect('profile', pk=pk)
+        else:
+            messages.error(request, 'Ops! Please check your profile detail again.')
+            return redirect('profile_update', pk=pk)
 
     else:
         user_form = UserUpdateForm(instance=profile_user)
@@ -80,3 +86,13 @@ def profile_update(request, pk):
         }
 
         return render(request, 'customer/profile_update.html', context=context)
+
+
+class UserLoginView(auth_views.LoginView):
+    model = User
+    form_class = UserLoginForm
+
+    # def get(self, request, *args, **kwargs):
+    #     if request.user.is_authenticated():
+    #         return HttpResponseRedirect('home')
+    #     return super(UserLoginView, self).get(request, *args, **kwargs)
