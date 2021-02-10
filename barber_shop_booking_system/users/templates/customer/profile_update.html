@@ -1,13 +1,12 @@
 {% extends "booking/base.html" %}
-{% load crispy_forms_tags %}
 {% block content %}
     <div>
         <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-r">
-                    {{ user_form|crispy }}
-                    {{ customer_form|crispy }}
+                    {{ user_form }}
+                    {{ customer_form }}
                 </legend>
             </fieldset>
         <div class="form-group">
