@@ -2,7 +2,7 @@
 {% block content %}
 <div class="crud-content profile">
     <ul class="profile-content">
-        <h2>My Profile</h2>
+        <h2>User Profile</h2>
         <li class="field">
             <p class="label_p">Username:</p>
             <p class="info_p">{{ username }}</p>
@@ -18,7 +18,9 @@
 
         <li class="field">
             {% if user == profile_user %}
-                <a href="{% url 'profile_update' user.customer_id.pk %}"><button class="login-btn">Edit Profile</button></a>
+                <a href="{% url 'profile_update' profile_user.customer_id.pk %}"><button class="login-btn">Edit Profile</button></a>
+            {% else %}
+                <a href="{% url 'my_bookings' profile_user.customer_id.pk %}"><button class="login-btn">User Bookings</button></a>
             {% endif %}
         </li>
     </ul>

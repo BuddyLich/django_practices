@@ -23,7 +23,10 @@ def register(request):
             messages.success(request, 'Account Created!')
             return redirect('login')
         else:
-            messages.error(request, 'Ops! Please check your register detail again.')
+
+            messages.error(request, user_form.errors)
+
+            print(user_form.errors)
             return redirect('register')
 
     else:

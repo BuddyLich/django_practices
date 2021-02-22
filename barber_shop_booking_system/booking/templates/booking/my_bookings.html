@@ -1,34 +1,6 @@
 {% extends "booking/base.html" %}
 {% block content %}
-<!--    <div>-->
-<!--        <a href="{% url 'my_bookings' user.pk %}"><button class="btn btn-primary">All</button></a>-->
-<!--        <a href="?status=pending"><button class="btn btn-primary">Pending</button></a>-->
-<!--        <a href="?status=confirmed"><button class="btn btn-primary">Confirmed</button></a>-->
-<!--        <a href="?status=completed"><button class="btn btn-primary">Completed</button></a>-->
-<!--        <a href="?status=cancelled"><button class="btn btn-primary">Cancelled</button></a>-->
-<!--    </div>-->
-<!--    <h2 id="queryStatus"></h2>-->
-<!--    {% if not bookings  %}-->
-<!--        <h1>No booking</h1>-->
-<!--    {% else %}-->
-<!--        <div>-->
-<!--            {% for booking in bookings %}-->
-<!--                    <p>Date: {{ booking.booking_date }}</p>-->
-<!--                    <p>Time: {{ booking.booking_time }}</p>-->
-<!--                    <p>Type: {{ booking.type }}</p>-->
-<!--                    <p>Additional Messages: {{ booking.additional_messages }}</p>-->
-<!--                    <a href="{% url 'booking_detail' booking.pk %}">Detail</a>-->
-<!--            {% endfor %}-->
-<!--        </div>-->
-<!--    {% endif %}-->
-
-
-
-
-
 <div class="listview">
-
-
     <div class="list-group booking-list">
         <h1>Booking History</h1>
 
@@ -40,7 +12,9 @@
             <a href="?status=cancelled"><button class="query-btn" id="cancelled">Cancelled</button></a>
         </div>
         {% if not bookings %}
-            <p>No booking</p>
+            <div class="no-result">
+                <p >No Result</p>
+            </div>
         {% endif %}
         {% for booking in bookings %}
             <a href="{% url 'booking_detail' booking.pk %}" class="list-group-item list-group-item-action flex-column align-items-start booking-list-item">
@@ -49,7 +23,7 @@
                     <small>Status: {{ booking.status }}</small>
                 </div>
                 <p class="mb-1">Type: {{ booking.type }}</p>
-                <small>Donec id elit non mi porta.</small>
+                <small>{{ booking.additional_messages|striptags|truncatechars:50 }}</small>
             </a>
         {% endfor %}
 

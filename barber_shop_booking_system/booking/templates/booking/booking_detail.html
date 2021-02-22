@@ -3,6 +3,12 @@
 <div class="crud-content booking-detail">
     <ul class="booking-content">
         <h2>Booking Detail</h2>
+        {% if user.is_staff or user.is_barber  %}
+            <li class="field">
+                <p class="label_p">Username:</p>
+                <a class="info_p" href="{% url 'profile' object.customer.pk %}">{{ object.customer.user.username }}</a>
+            </li>
+        {% endif %}
         <li class="field">
             <p class="label_p">Date:</p>
             <p class="info_p">{{ object.booking_date }}</p>
@@ -39,7 +45,7 @@
     {% if user.is_staff or user.is_barber  %}
         {% if object.status == 'pending' %}
             <div>
-                <a href="{% url 'confirm_booking' object.pk %}"><button class="confirm-btn">Confirm Booking</button></a>
+                <a href="{% url 'confirm_booking' object.pk %}"><button class="confirm-btn">Confirm</button></a>
                 <a href="{% url 'cancel_booking' object.pk %}"><button class="cancel-btn">Cancel</button></a>
             </div>
         {% elif object.status == 'confirmed' %}

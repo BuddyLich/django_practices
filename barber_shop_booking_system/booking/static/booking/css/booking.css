@@ -8,7 +8,7 @@
 }
 
 .booking-content {
-  position:absolute;
+  margin-top: 150px;
   width: 400px;
   color: black;
   background: linear-gradient(
@@ -16,7 +16,6 @@
     rgba(255, 255, 255, 1),
     rgba(255, 255, 255, 0.9)
   );
-
   border-radius: 7px;;
   padding: 50px 30px;
 }
@@ -114,11 +113,11 @@
 .listview {
   display: block;
   position: relative;
-  top: 200px;
+  margin-top: 200px;
   margin-left: auto;
   margin-right: auto;
-  max-width: 80vh;
-  min-width: 30vh;
+  max-width: 80vw;
+  min-width: 30vw;
 }
 
 .booking-list h1 {
@@ -185,4 +184,28 @@
 
 .page-btn.active {
   background-color: #e96745;
+}
+
+.no-result {
+  padding: 25px 30px;
+  color: grey;
+  font-size: 1.5rem;
+}
+
+@media(max-width:800px) {
+  .booking-content {
+    width: 320px;
+    top: 20%;
+    margin-bottom: 100px;
+  }
+
+  .booking-filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .listview {
+    margin-top: 100px;
+  }
 }

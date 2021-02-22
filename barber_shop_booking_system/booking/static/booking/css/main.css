@@ -78,7 +78,6 @@
 .hero p {
   font-size: 1.5vw;
   letter-spacing: 1px;
-
 }
 
 .content h2, .content h3 {
@@ -156,4 +155,31 @@
 
 .col .bookingBtn {
   font-size: 1rem
+}
+
+@media(max-width: 800px) {
+  .navbar-brand {
+    font-size: 1.5rem;
+  }
+
+  .hero h1 {
+    display: inline;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .hero.aboutPage .container {
+    max-width: 60%;
+    position: absolute;
+    left: 9%;
+    text-align: left;
+  }
+
+  .navbar-toggler {
+    margin-right: 10px;
+  }
+
+  .hero {
+    height: 50vh;
+  }
 }
