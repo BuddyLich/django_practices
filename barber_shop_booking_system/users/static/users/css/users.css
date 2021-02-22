@@ -88,7 +88,7 @@ input.login-input:focus {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
   position: relative;
 }
@@ -96,7 +96,6 @@ input.login-input:focus {
 .logout-content {
   position: absolute;
   top: 30%;
-
 }
 
 .logout-content div {
@@ -167,4 +166,11 @@ input.login-input:focus {
 
 .profile-content .info_p {
   flex: 1;
+}
+
+@media(max-width: 800px) {
+  .profile-content {
+    width: 320px;
+    top: 20%;
+    }
 }
