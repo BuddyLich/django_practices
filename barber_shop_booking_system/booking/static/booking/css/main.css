@@ -106,8 +106,9 @@
   background-color: dimgrey;
 }
 
-.footer-left {
-  maximum
+.main-footer {
+  display: flex;
+  flex-direction: row;
 }
 
 /* about_page */
