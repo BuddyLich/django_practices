@@ -145,9 +145,12 @@
   font-size: 0.8rem;
 }
 
-.copyright-first,
-.copyright-second {
-  margin: auto 2px;
+
+
+.copyright-first p,
+.copyright-second p {
+  margin: 5 2px;
+  align-items: center;
 }
 
 /* about_page */
@@ -221,5 +224,24 @@
 
   .hero {
     height: 50vh;
+  }
+
+  .main-footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .get-started {
+    margin-bottom: 20px;
+  }
+
+  .copyright {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .copyright-first p,
+  .copyright-second p {
+    margin: 2px 2px;
   }
 }
